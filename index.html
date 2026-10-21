@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/logo-sm.png">
+<title>Техник Миасс</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Сантехник, отопление и сварка в Миассе. Срочный ремонт сантехники в квартире и доме, установка смесителей, унитазов, ванн. Монтаж тепловых узлов и котельных по проекту. Мастер Данис.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: шапка-стекло; первый экран – крупный логотип, текст и фото мастера; сразу под ним развилка на два сегмента (квартира и дом / объекты по проекту), дальше секции на холодном светлом фоне. Акцент – красный из логотипа, индиго – текст и плашки */
+:root {
+  --ground: #f3f4f8;
+  --surface: #ffffff;
+  --surface-2: #eceef5;
+  --ink: #1d1747;
+  --ink-soft: #4b4f6b;
+  --muted: #6c7190;
+  --line: #dcdfea;
+  --brand-red: #d50f12;
+  --red-ink: #b30c0f;
+  --indigo: #251961;
+  --steel: #7d8bab;
+  --glass: rgba(255,255,255,.8);
+  --on-dark: #ffffff;
+  --todo-bg: #fff3c4;
+  --todo-fg: #6b4e00;
+  --shadow: 0 1px 2px rgba(29,23,71,.06), 0 8px 24px rgba(29,23,71,.07);
+
+  --f-display: "Roboto Slab", "PT Serif", Georgia, serif;
+  --f-body: "Onest", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --r: 14px;
+  --wrap: 1160px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #12102a; --surface: #1b1838; --surface-2: #232046; --ink: #eceaf8; --ink-soft: #c3c1da; --muted: #9b99b8; --line: #2f2b57;
+    --brand-red: #e3262a; --red-ink: #ff6b6b; --indigo: #3a2d8f; --steel: #8c99b9; --glass: rgba(27,24,56,.82);
+    --todo-bg: #4a3b0a; --todo-fg: #ffe08a; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #12102a; --surface: #1b1838; --surface-2: #232046; --ink: #eceaf8; --ink-soft: #c3c1da; --muted: #9b99b8; --line: #2f2b57;
+  --brand-red: #e3262a; --red-ink: #ff6b6b; --indigo: #3a2d8f; --steel: #8c99b9; --glass: rgba(27,24,56,.82);
+  --todo-bg: #4a3b0a; --todo-fg: #ffe08a; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body {
+  margin: 0;
+  background: var(--ground); color: var(--ink);
+  font-family: var(--f-body); font-size: 16.5px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--f-display); color: var(--ink); text-wrap: balance; margin: 0; line-height: 1.15; }
+h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.4rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--brand-red); outline-offset: 3px; border-radius: 6px; }
+img { display: block; max-width: 100%; height: auto; }
+
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red-ink); }
+.lead { color: var(--ink-soft); max-width: 62ch; }
+.todo { background: var(--todo-bg); color: var(--todo-fg); border-radius: 4px; padding: 0 .3em; font-size: .92em; }
+
+.topline { background: var(--indigo); color: var(--on-dark); font-size: .82rem; text-align: center; padding-block: 6px; }
+
+/* шапка */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ground); }
+.header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; padding-block: 12px; }
+.header__bar {
+  display: flex; align-items: center; gap: 20px; justify-content: space-between;
+  background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line); border-radius: 16px; padding: 6px 8px 6px 10px; box-shadow: var(--shadow);
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+.brand img { width: 44px; height: auto; flex: none; }
+.brand b { font-family: var(--f-display); font-size: 1.05rem; display: block; line-height: 1.1; }
+.brand small { color: var(--muted); font-size: .78rem; display: block; line-height: 1.2; }
+.nav { display: flex; gap: 18px; font-size: .9rem; }
+.nav a { text-decoration: none; color: var(--ink-soft); white-space: nowrap; }
+.nav a:hover { color: var(--brand-red); }
+.phone-btn { font-weight: 600; text-decoration: none; white-space: nowrap; background: var(--brand-red); color: #fff; padding: 9px 14px; border-radius: 10px; font-size: .95rem; }
+@media (max-width: 1040px) { .nav { display: none; } }
+@media (max-width: 420px) { .brand small { display: none; } .phone-btn { padding: 8px 10px; font-size: .88rem; } }
+
+/* первый экран */
+.hero { padding-block: 28px 40px; background: radial-gradient(70% 90% at 15% 0%, color-mix(in srgb, var(--brand-red) 9%, transparent), transparent 70%), radial-gradient(60% 80% at 100% 10%, color-mix(in srgb, var(--indigo) 12%, transparent), transparent 70%); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.25fr) minmax(0, .9fr); gap: 36px; align-items: center; }
+.hero__logo { width: 100%; max-width: 330px; justify-self: center; filter: drop-shadow(0 10px 22px rgba(29,23,71,.18)); }
+.hero__text { display: grid; gap: 16px; min-width: 0; }
+.hero h1 { font-size: clamp(1.9rem, 1.3rem + 2.2vw, 2.9rem); font-weight: 700; }
+.hero h1 span { color: var(--brand-red); }
+.hero__sub { font-family: var(--f-display); font-size: 1.1rem; color: var(--ink-soft); font-weight: 500; }
+.facts-row { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; margin: 0; list-style: none; font-size: .92rem; color: var(--ink-soft); }
+.facts-row li::before { content: "✓"; color: var(--brand-red); font-weight: 700; margin-right: 6px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 11px; font-weight: 600; text-decoration: none; font-size: .97rem; border: 1.5px solid transparent; font-family: inherit; cursor: pointer; background: none; color: inherit; }
+.btn--red { background: var(--brand-red); color: #fff; }
+.btn--red:hover { filter: brightness(1.07); }
+.btn--indigo { background: var(--indigo); color: #fff; }
+.btn--indigo:hover { filter: brightness(1.15); }
+.btn--line { border-color: var(--ink); color: var(--ink); }
+.btn--line:hover { background: var(--surface-2); }
+.portrait { margin: 0; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); border: 6px solid var(--surface); background: var(--surface); width: 100%; max-width: 360px; justify-self: end; }
+.portrait img { width: 100%; aspect-ratio: 1184 / 1328; object-fit: cover; }
+.portrait figcaption { padding: 10px 14px 12px; font-size: .88rem; color: var(--muted); }
+.portrait figcaption b { color: var(--ink); font-family: var(--f-display); font-size: 1rem; display: block; }
+@media (max-width: 1040px) {
+  .hero__grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); }
+  .portrait { grid-column: 1 / -1; justify-self: center; max-width: 380px; }
+}
+@media (max-width: 640px) {
+  .hero__grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero__logo { max-width: 240px; }
+}
+
+/* развилка сегментов */
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding-bottom: 8px; }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
+.seg { display: grid; gap: 8px; text-decoration: none; border-radius: 18px; padding: 22px 24px; border: 1.5px solid var(--line); background: var(--surface); transition: border-color .15s, transform .15s; }
+.seg:hover { border-color: var(--steel); transform: translateY(-2px); }
+.seg h2 { font-size: 1.45rem; }
+.seg p { color: var(--ink-soft); font-size: .96rem; }
+.seg .go { font-weight: 600; color: var(--red-ink); }
+.seg--home { background: var(--brand-red); border-color: var(--brand-red); }
+.seg--home h2, .seg--home p, .seg--home .go, .seg--home .eyebrow { color: #fff; }
+.seg--home p { opacity: .92; }
+
+/* секции */
+.section { padding-block: 64px; border-top: 1px solid var(--line); }
+.section--home { background: var(--surface); }
+.section__head { display: grid; gap: 10px; margin-bottom: 32px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+/* бытовой сегмент */
+.home-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 28px; align-items: start; }
+@media (max-width: 860px) { .home-grid { grid-template-columns: 1fr; } }
+.perks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 22px; }
+@media (max-width: 480px) { .perks { grid-template-columns: 1fr; } }
+.perk { background: var(--ground); border-radius: 12px; padding: 14px 16px; display: grid; gap: 2px; }
+.perk b { font-family: var(--f-display); font-size: 1.05rem; }
+.perk span { color: var(--muted); font-size: .9rem; }
+.tasks { columns: 2; column-gap: 28px; padding: 0; margin: 0; list-style: none; }
+@media (max-width: 480px) { .tasks { columns: 1; } }
+.tasks li { break-inside: avoid; padding: 7px 0 7px 22px; position: relative; border-bottom: 1px solid var(--line); font-size: .96rem; }
+.tasks li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 8px; height: 8px; border-radius: 2px; background: var(--brand-red); }
+.prices { background: var(--ground); border-radius: var(--r); padding: 22px; display: grid; gap: 12px; }
+.prices table { width: 100%; border-collapse: collapse; font-size: .96rem; }
+.prices td { padding: 9px 0; border-bottom: 1px dashed var(--line); vertical-align: top; }
+.prices td:last-child { text-align: right; white-space: nowrap; font-family: var(--f-mono); font-size: .9rem; font-variant-numeric: tabular-nums; padding-left: 12px; }
+.prices .small { font-size: .84rem; color: var(--muted); }
+
+/* направления по проекту */
+.svc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; display: grid; gap: 10px; align-content: start; }
+.svc__icon { width: 46px; height: 46px; border-radius: 12px; background: var(--surface-2); display: grid; place-items: center; color: var(--indigo); }
+.svc__icon svg { width: 26px; height: 26px; }
+.svc .when { color: var(--muted); font-size: .94rem; }
+.svc .when b { color: var(--ink); font-weight: 600; }
+.svc p:last-child { font-size: .97rem; }
+
+/* объекты */
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .cases { grid-template-columns: 1fr; max-width: 520px; } }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+.case img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.case__body { padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; }
+.case__body p { font-size: .94rem; color: var(--ink-soft); }
+.spec { font-family: var(--f-mono); font-size: .76rem; color: var(--muted); line-height: 1.5; border-top: 1px dashed var(--line); padding-top: 10px; }
+
+/* как работаю */
+.steps-wrap { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr); gap: 32px; align-items: start; }
+@media (max-width: 860px) { .steps-wrap { grid-template-columns: 1fr; } }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 16px; counter-increment: s; }
+.steps li::before { content: counter(s); grid-row: span 2; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--steel); display: grid; place-items: center; font-family: var(--f-mono); font-size: .9rem; color: var(--red-ink); background: var(--surface); }
+.steps p { color: var(--ink-soft); font-size: .97rem; }
+.aside { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; display: grid; gap: 12px; box-shadow: var(--shadow); }
+.aside ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.aside .small { font-size: .88rem; color: var(--muted); }
+
+/* о мастере */
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; }
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr; } }
+.facts h3 { margin-bottom: 4px; }
+.facts p { color: var(--ink-soft); }
+
+/* отзывы */
+.scores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 26px; }
+@media (max-width: 700px) { .scores { grid-template-columns: 1fr; } }
+.score { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 14px; align-items: center; text-decoration: none; }
+.score:hover { border-color: var(--steel); }
+.score b { font-family: var(--f-display); font-size: 2rem; grid-row: span 2; line-height: 1; font-variant-numeric: tabular-nums; }
+.score span { font-weight: 600; }
+.score small { color: var(--muted); font-size: .86rem; }
+.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 900px) { .reviews { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .reviews { grid-template-columns: 1fr; } }
+.review { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: grid; gap: 12px; grid-template-rows: auto 1fr auto; }
+.stars { color: #f2b300; letter-spacing: 2px; font-size: .95rem; }
+.review blockquote { margin: 0; font-size: .96rem; white-space: pre-line; }
+.review figcaption { font-size: .85rem; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.review figcaption b { color: var(--ink); font-weight: 600; }
+.review figcaption a { color: var(--muted); }
+
+/* вопросы */
+.faq { display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0 20px; }
+.faq summary { cursor: pointer; padding: 16px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--f-mono); color: var(--red-ink); font-size: 1.2rem; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding-bottom: 18px; color: var(--ink-soft); }
+
+/* контакты */
+.contacts { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 32px; align-items: start; }
+@media (max-width: 820px) { .contacts { grid-template-columns: 1fr; } }
+.contact-card { background: var(--indigo); color: var(--on-dark); border-radius: 20px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 18px; }
+.contact-card h3 { color: var(--on-dark); }
+.contact-card .phone { font-family: var(--f-display); font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem); font-weight: 700; user-select: all; font-variant-numeric: tabular-nums; }
+.contact-card .muted { color: rgba(255,255,255,.78); font-size: .93rem; }
+.contact-card .btn--line { border-color: rgba(255,255,255,.7); color: #fff; }
+.contact-card .btn--line:hover { background: rgba(255,255,255,.1); }
+.contact-card .btn--white { background: #fff; color: #251961; }
+.copy-note { font-size: .82rem; color: rgba(255,255,255,.78); min-height: 1.2em; }
+.links { display: grid; gap: 10px; }
+.links a { display: flex; justify-content: space-between; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; text-decoration: none; font-weight: 500; }
+.links a:hover { border-color: var(--steel); }
+.links a span:last-child { color: var(--muted); font-weight: 400; font-size: .9rem; }
+.addr { display: grid; gap: 4px; padding: 4px 4px 12px; }
+.addr small { color: var(--muted); }
+
+.footer { border-top: 1px solid var(--line); padding-block: 28px 36px; font-size: .86rem; color: var(--muted); }
+.footer__row { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: center; }
+.footer__brand { display: flex; gap: 12px; align-items: center; }
+.footer__brand img { width: 56px; }
+
+/* нижняя панель на телефоне */
+.mobile-bar { display: none; }
+@media (max-width: 640px) {
+  .mobile-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9;
+    padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+    background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
+  .mobile-bar .btn { justify-content: center; padding: 12px 10px; }
+  .footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+}
+</style>
+</head>
+<body>
+
+<div class="topline gutter">Заявки ежедневно с 9:00 до 21:00 · выезд по Миассу в день обращения</div>
+
+<header class="header gutter">
+  <div class="wrap header__bar">
+    <a class="brand" href="#top" aria-label="Техник Миасс – в начало">
+      <img src="img/logo-sm.png" alt="" width="44" height="55">
+      <span><b>Техник Миасс</b><small>сантехника · отопление · сварка</small></span>
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#dom">Квартира и дом</a>
+      <a href="#proekty">Объекты по проекту</a>
+      <a href="#rabota">Как работаю</a>
+      <a href="#master">О мастере</a>
+      <a href="#otzyvy">Отзывы</a>
+      <a href="#voprosy">Вопросы</a>
+      <a href="#kontakty">Контакты</a>
+    </nav>
+    <a class="phone-btn" href="tel:+79085704767">+7 908 570-47-67</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero gutter">
+    <div class="wrap hero__grid">
+      <img class="hero__logo" src="img/logo.png" alt="Техник Миасс" width="560" height="702">
+      <div class="hero__text">
+        <p class="eyebrow">Сантехник · Миасс</p>
+        <h1>Сантехника, отопление и сварка <span>в Миассе</span></h1>
+        <p class="hero__sub">Данис – техник по водоснабжению и водоотведению, электрогазосварщик</p>
+        <p class="lead">Приеду в день обращения: устраню протечку, поменяю смеситель или унитаз, починю отопление. Для домов, цехов и складов монтирую тепловые узлы и котельные по проекту.</p>
+        <ul class="facts-row">
+          <li>Оплата после работы</li><li>Договор и чек</li><li>Гарантия на работу</li><li>Больше 10 лет опыта</li>
+        </ul>
+        <div class="btns">
+          <a class="btn btn--red" href="tel:+79085704767">Позвонить</a>
+          <a class="btn btn--indigo js-max" href="https://max.ru/" target="_blank" rel="noopener">Написать в MAX</a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="img/danis-diplom.jpg" alt="Данис с дипломом о профессиональном образовании" width="900" height="1009">
+        <figcaption><b>Данис</b>сантехник и электрогазосварщик</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="gutter" aria-label="Выберите, что вам нужно">
+    <div class="wrap split">
+      <a class="seg seg--home" href="#dom">
+        <span class="eyebrow">Для жителей</span>
+        <h2>Квартира и частный дом</h2>
+        <p>Протечки, смесители, унитазы, ванны, водонагреватели, батареи. Срочный выезд, цены от 1000 ₽.</p>
+        <span class="go">Услуги и цены →</span>
+      </a>
+      <a class="seg" href="#proekty">
+        <span class="eyebrow">Для объектов и организаций</span>
+        <h2>Монтаж по проекту</h2>
+        <p>Тепловые узлы, котельные, отопление цехов и складов, сварка трубопроводов. Работаю по договору.</p>
+        <span class="go">Направления и объекты →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section section--home gutter" id="dom">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Для жителей</p>
+        <h2>Сантехника в квартире и доме</h2>
+        <p class="lead">Позвоните и опишите, что случилось. Если течёт – подскажу по телефону, как перекрыть воду, и приеду.</p>
+      </div>
+      <div class="home-grid">
+        <div>
+          <div class="perks">
+            <div class="perk"><b>В день обращения</b><span>выезд по Миассу, в выходные тоже</span></div>
+            <div class="perk"><b>Оплата после работы</b><span>минимальный заказ 1000 ₽</span></div>
+            <div class="perk"><b>Объясню и покажу</b><span>что сломалось и как не допустить снова</span></div>
+            <div class="perk"><b>Куплю детали сам</b><span>привезу чек, оплата по чеку</span></div>
+          </div>
+          <ul class="tasks">
+            <li>Протечки и аварийный ремонт</li>
+            <li>Смесители и краны</li>
+            <li>Унитазы и инсталляции</li>
+            <li>Ванны и душевые кабины</li>
+            <li>Скрытый монтаж душевых систем</li>
+            <li>Водонагреватели и бойлеры</li>
+            <li>Полотенцесушители</li>
+            <li>Сифоны, шланги, подводка</li>
+            <li>Разводка под мойку и посудомойку</li>
+            <li>Счётчики воды</li>
+            <li>Фильтры очистки воды</li>
+            <li>Батареи и радиаторы</li>
+            <li>Насосные станции</li>
+            <li>Септики и канализация в доме</li>
+            <li>Полив для участка и теплицы</li>
+            <li>Сварка трубы отопления в квартире</li>
+          </ul>
+        </div>
+        <div class="prices">
+          <h3>Цены на частые работы</h3>
+          <table>
+            <tbody>
+              <tr><td>Устранение протечки</td><td>от 1 000 ₽</td></tr>
+              <tr><td>Установка или замена счётчика воды</td><td>1 000 ₽</td></tr>
+              <tr><td>Замена сифона</td><td>от 1 500 ₽</td></tr>
+              <tr><td>Замена смесителя в ванной</td><td>от 2 000 ₽</td></tr>
+              <tr><td>Замена кухонного смесителя</td><td>от 2 000 ₽</td></tr>
+              <tr><td>Устранение засора</td><td>от 3 000 ₽</td></tr>
+              <tr><td>Установка водонагревателя</td><td>от 3 000 ₽</td></tr>
+              <tr><td>Установка или замена унитаза</td><td>от 5 000 ₽</td></tr>
+              <tr><td>Замена батареи</td><td>от 5 000 ₽</td></tr>
+              <tr><td>Установка или замена ванны</td><td>от 7 000 ₽</td></tr>
+              <tr><td>Установка душевой кабины</td><td>от 10 000 ₽</td></tr>
+              <tr><td>Унитаз с инсталляцией</td><td>от 10 000 ₽</td></tr>
+              <tr><td>Замена полотенцесушителя</td><td>от 10 000 ₽</td></tr>
+            </tbody>
+          </table>
+          <p class="small">Точную цену назову по телефону или на месте, до начала работы. Детали и материалы оплачиваются отдельно, по чеку. Цены на сайте не являются публичной офертой.</p>
+          <div class="btns">
+            <a class="btn btn--red" href="tel:+79085704767">Вызвать мастера</a>
+            <a class="btn btn--line js-max" href="https://max.ru/" target="_blank" rel="noopener">Написать в MAX</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gutter" id="proekty">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Для объектов и организаций</p>
+        <h2>Монтаж инженерных систем по проекту</h2>
+        <p class="lead">Сам читаю проект, сам варю трубопровод и сам собираю узел: всю работу на объекте ведёт один человек. Пришлите проект или фото объекта, посчитаю стоимость монтажа.</p>
+      </div>
+      <div class="grid-3">
+        <article class="svc">
+          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 8h18M3 16h18"/><circle cx="8" cy="8" r="2.2" fill="currentColor"/><circle cx="16" cy="16" r="2.2" fill="currentColor"/><path d="M12 4v16"/></svg></div>
+          <h3>Тепловые узлы</h3>
+          <p class="when"><b>Когда зовут:</b> есть проект теплового узла здания, а смонтировать его некому.</p>
+          <p>Теплообменники, циркуляционные насосы, запорная и автоматическая арматура, приборы учёта тепла, датчики КИП. Стальные трубопроводы на сварке и фланцах.</p>
+        </article>
+        <article class="svc">
+          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="10" height="16" rx="1.5"/><path d="M15 7h3a1 1 0 0 1 1 1v8M19 16v4M8 15c0-2 2-2.5 2-4.5 1.2 1 2 2.2 2 3.5a2 2 0 0 1-4 1z"/></svg></div>
+          <h3>Котельные и обвязка котлов</h3>
+          <p class="when"><b>Когда зовут:</b> ставите газовый или электрический котёл, собираете котельную.</p>
+          <p>Обвязка котла, насосы, гребёнки, водоподготовка. Подключение к газовой сети и пуск выполняет газоснабжающая организация.</p>
+        </article>
+        <article class="svc">
+          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l5-4 5 4v12M4 21h16M14 13h6v8"/><path d="M17 13V6"/><path d="M17 6c1.2-.8 1.2-2.2 0-3"/></svg></div>
+          <h3>Отопление без электричества</h3>
+          <p class="when"><b>Когда зовут:</b> дом с печью, где отключают свет.</p>
+          <p>Гравитационная система с естественной циркуляцией: работает без насоса. Рассчитываю уклоны и диаметры, варю контур и регистры.</p>
+        </article>
+        <article class="svc">
+          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V10l7-5 7 5v10"/><rect x="8.5" y="12" width="7" height="5" rx="1"/><path d="M10 14.5h4"/></svg></div>
+          <h3>Отопление цехов и складов</h3>
+          <p class="when"><b>Когда зовут:</b> нужно обогреть производственное помещение или ангар.</p>
+          <p>Тепловентиляторы, регистры, стальные и полипропиленовые магистрали, замена теплоносителя.</p>
+        </article>
+        <article class="svc">
+          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l7-7M11 13l2-2 3 3-2 2zM15 9l2-2M18 4l2 2-3 3-2-2z"/><path d="M6 13l-1-2M8 11l-2-.5M9 15l-2 .5"/></svg></div>
+          <h3>Сварочные работы</h3>
+          <p class="when"><b>Когда зовут:</b> нужно врезаться в магистраль или сварить конструкцию.</p>
+          <p>Электрогазосварка трубопроводов отопления и водоснабжения. Опоры, кронштейны, регистры, каркасы.</p>
+        </article>
+        <article class="svc">
+          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z"/><path d="M10 13a2 2 0 0 0 2 2"/></svg></div>
+          <h3>Наружные сети</h3>
+          <p class="when"><b>Когда зовут:</b> строите дом или подводите воду и канализацию к зданию.</p>
+          <p>Водоснабжение и канализация, септики из полипропилена, ПНД и бетона, промывка канализации.</p>
+        </article>
+      </div>
+
+      <h3 style="margin: 44px 0 16px; font-size: 1.4rem;">Объекты</h3>
+      <div class="cases">
+        <article class="case">
+          <img src="img/uzel-2.jpg" alt="Смонтированный тепловой узел: стальные трубопроводы, насосы, пластинчатый теплообменник" width="1000" height="750" loading="lazy">
+          <div class="case__body">
+            <h3>Тепловой узел здания</h3>
+            <p>Пластинчатые теплообменники, циркуляционные насосы, фланцевая запорная арматура и фильтры. Трубопроводы на сварке.</p>
+          </div>
+        </article>
+        <article class="case">
+          <img src="img/ceh.jpg" alt="Монтаж отопления в производственном помещении: тепловентиляторы и стальные магистрали" width="900" height="1117" loading="lazy">
+          <div class="case__body">
+            <h3>Отопление цеха</h3>
+            <p>Проложил и сварил магистрали отопления, подводки к тепловентиляторам, смонтировал регистры.</p>
+            <p class="spec">Цех ≈ 12 × 50 м · магистраль Ø110 мм · подводки Ø40 мм</p>
+          </div>
+        </article>
+        <article class="case">
+          <img src="img/ik-izluchatel.jpg" alt="Инфракрасный излучатель под потолком ангара" width="779" height="583" loading="lazy">
+          <div class="case__body">
+            <h3>Обогрев ангара</h3>
+            <p>Монтаж инфракрасных излучателей в большом ангаре. Работал на субподряде у монтажной организации.</p>
+            <p class="spec">Субподряд · инфракрасное отопление</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gutter" id="rabota">
+    <div class="wrap">
+      <div class="section__head"><h2>Как я работаю</h2></div>
+      <div class="steps-wrap">
+        <ol class="steps">
+          <li><h3>Звонок или сообщение</h3><p>Опишите задачу по телефону или пришлите фото в MAX. Для объекта по проекту пришлите проект или схему.</p></li>
+          <li><h3>Цена до начала работы</h3><p>Небольшой ремонт оцениваю по телефону или на месте. Для крупной работы приезжаю на осмотр и считаю стоимость.</p></li>
+          <li><h3>Материалы</h3><p>Детали и материалы покупаю сам, привожу чек. Вы оплачиваете их по чеку, отдельно от работы.</p></li>
+          <li><h3>Работа и проверка</h3><p>Делаю работу, проверяю, что нигде не течёт. Новую систему проверяю давлением до того, как её закроют отделкой.</p></li>
+          <li><h3>Оплата и гарантия</h3><p>Оплата после работы наличными или переводом. Выдаю чек, на работу даю гарантию 3 месяца. Для крупных работ – договор и акт.</p></li>
+        </ol>
+        <aside class="aside">
+          <h3>Что прислать, чтобы я быстрее назвал цену</h3>
+          <ul>
+            <li>Фото того, что сломалось или что нужно установить</li>
+            <li>Адрес и удобное время</li>
+            <li>Для объекта: проект или схему (PDF, фото листов)</li>
+          </ul>
+          <a class="btn btn--indigo js-max" href="https://max.ru/" target="_blank" rel="noopener" style="justify-self:start">Написать в MAX</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gutter" id="master">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>О мастере</h2>
+        <p class="lead">Жамилов Данис Вагизович, мастер по сантехнике, отоплению и сварке.</p>
+      </div>
+      <div class="facts">
+        <div>
+          <h3>Образование</h3>
+          <p>Южно-Уральский государственный технический колледж, 2019 год. Специальность 08.02.04 «Водоснабжение и водоотведение», квалификация «техник». В рамках обучения освоил рабочую профессию электрогазосварщика, дипломный проект – реконструкция очистных сооружений Миасса.</p>
+        </div>
+        <div>
+          <h3>Опыт</h3>
+          <p>Больше 10 лет в сантехнике и отоплении. От срочных вызовов в квартирах до монтажа тепловых узлов и котельных. Не нужно отдельно искать сварщика и сантехника.</p>
+        </div>
+        <div>
+          <h3>Работа с предприятиями</h3>
+          <p>Работал по договорам с промышленными предприятиями Миасса: ЮУРЦУ, УЗСТ, УЗПМ, ООО «Кедр».</p>
+        </div>
+        <div>
+          <h3>Бригада</h3>
+          <p>Небольшие работы делаю сам. На крупные объекты привлекаю проверенных мастеров – до 6 человек, каждый тоже работает как самозанятый.</p>
+        </div>
+        <div>
+          <h3>Как оформляю работу</h3>
+          <p>Работаю как самозанятый: на каждую оплату выдаю чек, для крупных работ заключаю договор подряда. Работаю с жителями и с организациями.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gutter" id="otzyvy">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Отзывы</h2>
+        <p class="lead">Отзывы перенесены без правок, с орфографией авторов. Остальные можно прочитать на площадках.</p>
+      </div>
+      <div class="scores">
+        <a class="score js-avito" href="https://www.avito.ru/miass/predlozheniya_uslug/santehnik_1782666379" target="_blank" rel="noopener"><b>5,0</b><span>Авито</span><small>71 отзыв</small></a>
+        <a class="score" href="https://2gis.ru/miass/firm/70000001104048159/tab/reviews" target="_blank" rel="noopener"><b>5,0</b><span>2ГИС</span><small>17 оценок, 16 отзывов</small></a>
+        <a class="score" href="https://yandex.ru/maps/org/tekhnik_miass/111853591388/reviews/" target="_blank" rel="noopener"><b>5,0</b><span>Яндекс Карты</span><small>1 отзыв</small></a>
+      </div>
+      <div class="reviews">
+        <figure class="review">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <blockquote>Огромное спасибо мастеру за оперативность и качество! Позвонила ему со срочной проблемой, очень быстро приехал, устранил течь в унитазе и сифоне под раковиной. Все объяснил, рассказал. Однозначно рекомендую</blockquote>
+          <figcaption><b>Надежда</b><a class="js-avito" href="https://www.avito.ru/miass/predlozheniya_uslug/santehnik_1782666379" target="_blank" rel="noopener">Авито, 2 июля</a></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <blockquote>Были проблемы в системе отопления в доме. Батареи холодные в 2-х комнатах, ничего не могли сделать, несколько раз приезжали мастера… Сама ничего не понимаю, услышала про Даниса от знакомых. Огромная благодарность, человек приехал и починил все за пару часов! Больше искать не придется, буду обращаться сюда)</blockquote>
+          <figcaption><b>Катюша Соломатова</b><a href="https://2gis.ru/miass/firm/70000001104048159/tab/reviews" target="_blank" rel="noopener">2ГИС</a></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <blockquote>Отличный мастер, приехал в день обращения, все сделал в лучшем виде! И сам по себе приятный общительный парень, все показал, рассказал) рекомендую!</blockquote>
+          <figcaption><b>Сергей</b><a class="js-avito" href="https://www.avito.ru/miass/predlozheniya_uslug/santehnik_1782666379" target="_blank" rel="noopener">Авито, 23 июня</a></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <blockquote>Всё замечательно!
+Приехал в тот-же день, когда я обратился за помощью!
+Нужно было заварить отверстие в трубе отопления в квартире, неполадка была устранена за 15 минут!
+Техника безопасности была соблюдена на 5++</blockquote>
+          <figcaption><b>Кирилл</b><a class="js-avito" href="https://www.avito.ru/miass/predlozheniya_uslug/santehnik_1782666379" target="_blank" rel="noopener">Авито, 9 июня</a></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <blockquote>Отличный мастер. Сделал всё быстро и аккуратно (замена сифона), и цена адекватная .Однозначно буду обращаться к нему по мере необходимости. Рекомендую.</blockquote>
+          <figcaption><b>irina</b><a class="js-avito" href="https://www.avito.ru/miass/predlozheniya_uslug/santehnik_1782666379" target="_blank" rel="noopener">Авито, 19 апреля</a></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <blockquote>очень хороший мастер. советую. выручил в сложной ситуации, связанной с заменой полотенцесушителя.</blockquote>
+          <figcaption><b>Igor Degtyarev</b><a class="js-avito" href="https://www.avito.ru/miass/predlozheniya_uslug/santehnik_1782666379" target="_blank" rel="noopener">Авито, 30 мая</a></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gutter" id="voprosy">
+    <div class="wrap">
+      <div class="section__head"><h2>Частые вопросы</h2></div>
+      <div class="faq">
+        <details>
+          <summary>Что делать, если течёт прямо сейчас?</summary>
+          <p>Перекройте кран на вводе воды в квартиру: обычно он стоит рядом со счётчиком. Если течёт отопление или кран не перекрывается, звоните в управляющую компанию и мне. Подскажу по телефону и приеду.</p>
+        </details>
+        <details>
+          <summary>Сколько стоит вызов?</summary>
+          <p>Минимальный заказ 1000 ₽. Цену работы называю до начала, оплата после того, как всё сделано и проверено.</p>
+        </details>
+        <details>
+          <summary>Кто покупает детали и материалы?</summary>
+          <p>Покупаю сам и привожу чек. Вы оплачиваете материалы по чеку, отдельно от работы.</p>
+        </details>
+        <details>
+          <summary>Подключаете ли вы газовый котёл?</summary>
+          <p>Устанавливаю котёл и делаю обвязку: трубы, насосы, арматуру. Подключение к газовой сети и первый пуск выполняет газоснабжающая организация – так требуют правила.</p>
+        </details>
+        <details>
+          <summary>Работаете ли вы с организациями?</summary>
+          <p>Да. По договору подряда, как самозанятый, на каждую оплату выдаю чек.</p>
+        </details>
+        <details>
+          <summary>Даёте ли гарантию?</summary>
+          <p>Да, 3 месяца на выполненную работу.</p>
+        </details>
+        <details>
+          <summary>Выезжаете ли за пределы Миасса?</summary>
+          <p>Да, в Карабаш. Выезд туда оплачивается отдельно, стоимость назову по телефону.</p>
+        </details>
+        <details>
+          <summary>Какие работы вы не берёте?</summary>
+          <p>Регулярное обслуживание систем по договору и непрофильные работы: укладку плитки, отделку и подобное.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gutter" id="kontakty">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Контакты</h2>
+        <p class="lead">Звоните или пишите в MAX. Фото поломки и проекты удобнее присылать в MAX.</p>
+      </div>
+      <div class="contacts">
+        <div class="contact-card">
+          <h3>Телефон для заявок</h3>
+          <div class="phone" id="phone">+7 908 570-47-67</div>
+          <p class="muted">Звонки ежедневно с 9:00 до 21:00. На объекты выезжаю с 10:00 до 19:00, при необходимости раньше или позже.</p>
+          <div class="btns">
+            <a class="btn btn--red" href="tel:+79085704767">Позвонить</a>
+            <a class="btn btn--white js-max" href="https://max.ru/" target="_blank" rel="noopener">Написать в MAX</a>
+            <button class="btn btn--line" type="button" id="copy-phone">Скопировать номер</button>
+          </div>
+          <p class="copy-note" id="copy-note" aria-live="polite"></p>
+        </div>
+        <div class="links">
+          <div class="addr">
+            <b>Миасс, ул. Богдана Хмельницкого, 72</b>
+            <small>Машгородок, остановка «Спортивная»</small>
+          </div>
+          <a class="js-max" href="https://max.ru/" target="_blank" rel="noopener"><span>MAX</span><span>написать сообщение →</span></a>
+          <a class="js-avito" href="https://www.avito.ru/miass/predlozheniya_uslug/santehnik_1782666379" target="_blank" rel="noopener"><span>Авито</span><span>объявление и отзывы →</span></a>
+          <a href="https://2gis.ru/miass/firm/70000001104048159" target="_blank" rel="noopener"><span>2ГИС</span><span>карта и отзывы →</span></a>
+          <a href="https://yandex.ru/maps/org/tekhnik_miass/111853591388/" target="_blank" rel="noopener"><span>Яндекс Карты</span><span>маршрут →</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer gutter">
+  <div class="wrap footer__row">
+    <div class="footer__brand">
+      <img src="img/logo-sm.png" alt="Логотип «Техник Миасс»" width="56" height="70">
+      <div>Исполнитель: Жамилов Данис Вагизович, плательщик налога на профессиональный доход, ИНН 743806259859</div>
+    </div>
+    <div>© 2026 Техник Миасс · Информация на сайте не является публичной офертой</div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn--red" href="tel:+79085704767">Позвонить</a>
+  <a class="btn btn--indigo js-max" href="https://max.ru/" target="_blank" rel="noopener">Написать в MAX</a>
+</div>
+
+<script>
+/* Ссылки на MAX и Авито задаются здесь, в одном месте */
+var LINKS = {
+  max: "https://max.ru/u/f9LHodD0cOJzlQwxexQjAu40f3YeFBe5lycmQ14bem66pRA56JiCwseXWVM",
+  avito: "https://www.avito.ru/user/0c97965979351af2c8b39ec9e98025fe/profile"
+};
+(function () {
+  document.querySelectorAll('.js-max').forEach(function (a) { a.href = LINKS.max; });
+  document.querySelectorAll('.js-avito').forEach(function (a) { a.href = LINKS.avito; });
+
+  var btn = document.getElementById('copy-phone');
+  var note = document.getElementById('copy-note');
+  var phone = document.getElementById('phone');
+  btn.addEventListener('click', function () {
+    function selectFallback() {
+      var r = document.createRange(); r.selectNodeContents(phone);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      note.textContent = 'Номер выделен – скопируйте его.';
+    }
+    try {
+      navigator.clipboard.writeText('+79085704767').then(function () { note.textContent = 'Номер скопирован.'; }, selectFallback);
+    } catch (e) { selectFallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>
