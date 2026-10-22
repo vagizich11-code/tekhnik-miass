@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/logo-sm.png">
+<title>Работы – Техник Миасс</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Выполненные работы мастера Даниса в Миассе: отопление, тепловые узлы, скрытая разводка водопровода, водонагреватели, сварные лестницы и стеллажи. Фото с объектов.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600;700&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: шапка-стекло; первый экран – крупный логотип, текст и фото мастера; сразу под ним развилка на два сегмента (квартира и дом / объекты по проекту), дальше секции на холодном светлом фоне. Акцент – красный из логотипа, индиго – текст и плашки */
+:root {
+  --ground: #f3f4f8;
+  --surface: #ffffff;
+  --surface-2: #eceef5;
+  --ink: #1d1747;
+  --ink-soft: #4b4f6b;
+  --muted: #6c7190;
+  --line: #dcdfea;
+  --brand-red: #d50f12;
+  --red-ink: #b30c0f;
+  --indigo: #251961;
+  --steel: #7d8bab;
+  --glass: rgba(255,255,255,.8);
+  --on-dark: #ffffff;
+  --todo-bg: #fff3c4;
+  --todo-fg: #6b4e00;
+  --shadow: 0 1px 2px rgba(29,23,71,.06), 0 8px 24px rgba(29,23,71,.07);
+
+  --f-display: "Roboto Slab", "PT Serif", Georgia, serif;
+  --f-body: "Onest", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --r: 14px;
+  --wrap: 1160px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #12102a; --surface: #1b1838; --surface-2: #232046; --ink: #eceaf8; --ink-soft: #c3c1da; --muted: #9b99b8; --line: #2f2b57;
+    --brand-red: #e3262a; --red-ink: #ff6b6b; --indigo: #3a2d8f; --steel: #8c99b9; --glass: rgba(27,24,56,.82);
+    --todo-bg: #4a3b0a; --todo-fg: #ffe08a; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #12102a; --surface: #1b1838; --surface-2: #232046; --ink: #eceaf8; --ink-soft: #c3c1da; --muted: #9b99b8; --line: #2f2b57;
+  --brand-red: #e3262a; --red-ink: #ff6b6b; --indigo: #3a2d8f; --steel: #8c99b9; --glass: rgba(27,24,56,.82);
+  --todo-bg: #4a3b0a; --todo-fg: #ffe08a; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body {
+  margin: 0;
+  background: var(--ground); color: var(--ink);
+  font-family: var(--f-body); font-size: 16.5px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--f-display); color: var(--ink); text-wrap: balance; margin: 0; line-height: 1.15; }
+h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.4rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--brand-red); outline-offset: 3px; border-radius: 6px; }
+img { display: block; max-width: 100%; height: auto; }
+
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red-ink); }
+.lead { color: var(--ink-soft); max-width: 62ch; }
+.todo { background: var(--todo-bg); color: var(--todo-fg); border-radius: 4px; padding: 0 .3em; font-size: .92em; }
+
+.topline { background: var(--indigo); color: var(--on-dark); font-size: .82rem; text-align: center; padding-block: 6px; }
+
+/* шапка */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ground); }
+.header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; padding-block: 12px; }
+.header__bar {
+  display: flex; align-items: center; gap: 20px; justify-content: space-between;
+  background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line); border-radius: 16px; padding: 6px 8px 6px 10px; box-shadow: var(--shadow);
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+.brand img { width: 44px; height: auto; flex: none; }
+.brand b { font-family: var(--f-display); font-size: 1.05rem; display: block; line-height: 1.1; }
+.brand small { color: var(--muted); font-size: .78rem; display: block; line-height: 1.2; }
+.nav { display: flex; gap: 18px; font-size: .9rem; }
+.nav a { text-decoration: none; color: var(--ink-soft); white-space: nowrap; }
+.nav a:hover { color: var(--brand-red); }
+.phone-btn { font-weight: 600; text-decoration: none; white-space: nowrap; background: var(--brand-red); color: #fff; padding: 9px 14px; border-radius: 10px; font-size: .95rem; }
+@media (max-width: 1040px) { .nav { display: none; } }
+@media (max-width: 420px) { .brand small { display: none; } .phone-btn { padding: 8px 10px; font-size: .88rem; } }
+
+/* первый экран */
+.hero { padding-block: 28px 40px; background: radial-gradient(70% 90% at 15% 0%, color-mix(in srgb, var(--brand-red) 9%, transparent), transparent 70%), radial-gradient(60% 80% at 100% 10%, color-mix(in srgb, var(--indigo) 12%, transparent), transparent 70%); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.25fr) minmax(0, .9fr); gap: 36px; align-items: center; }
+.hero__logo { width: 100%; max-width: 330px; justify-self: center; filter: drop-shadow(0 10px 22px rgba(29,23,71,.18)); }
+.hero__text { display: grid; gap: 16px; min-width: 0; }
+.hero h1 { font-size: clamp(1.9rem, 1.3rem + 2.2vw, 2.9rem); font-weight: 700; }
+.hero h1 span { color: var(--brand-red); }
+.hero__sub { font-family: var(--f-display); font-size: 1.1rem; color: var(--ink-soft); font-weight: 500; }
+.facts-row { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; margin: 0; list-style: none; font-size: .92rem; color: var(--ink-soft); }
+.facts-row li::before { content: "✓"; color: var(--brand-red); font-weight: 700; margin-right: 6px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 11px; font-weight: 600; text-decoration: none; font-size: .97rem; border: 1.5px solid transparent; font-family: inherit; cursor: pointer; background: none; color: inherit; }
+.btn--red { background: var(--brand-red); color: #fff; }
+.btn--red:hover { filter: brightness(1.07); }
+.btn--indigo { background: var(--indigo); color: #fff; }
+.btn--indigo:hover { filter: brightness(1.15); }
+.btn--line { border-color: var(--ink); color: var(--ink); }
+.btn--line:hover { background: var(--surface-2); }
+.portrait { margin: 0; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); border: 6px solid var(--surface); background: var(--surface); width: 100%; max-width: 360px; justify-self: end; }
+.portrait img { width: 100%; aspect-ratio: 1184 / 1328; object-fit: cover; }
+.portrait figcaption { padding: 10px 14px 12px; font-size: .88rem; color: var(--muted); }
+.portrait figcaption b { color: var(--ink); font-family: var(--f-display); font-size: 1rem; display: block; }
+@media (max-width: 1040px) {
+  .hero__grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); }
+  .portrait { grid-column: 1 / -1; justify-self: center; max-width: 380px; }
+}
+@media (max-width: 640px) {
+  .hero__grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero__logo { max-width: 240px; }
+}
+
+/* развилка сегментов */
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding-bottom: 8px; }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
+.seg { display: grid; gap: 8px; text-decoration: none; border-radius: 18px; padding: 22px 24px; border: 1.5px solid var(--line); background: var(--surface); transition: border-color .15s, transform .15s; }
+.seg:hover { border-color: var(--steel); transform: translateY(-2px); }
+.seg h2 { font-size: 1.45rem; }
+.seg p { color: var(--ink-soft); font-size: .96rem; }
+.seg .go { font-weight: 600; color: var(--red-ink); }
+.seg--home { background: var(--brand-red); border-color: var(--brand-red); }
+.seg--home h2, .seg--home p, .seg--home .go, .seg--home .eyebrow { color: #fff; }
+.seg--home p { opacity: .92; }
+
+/* секции */
+.section { padding-block: 64px; border-top: 1px solid var(--line); }
+.section--home { background: var(--surface); }
+.section__head { display: grid; gap: 10px; margin-bottom: 32px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+/* бытовой сегмент */
+.home-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 28px; align-items: start; }
+@media (max-width: 860px) { .home-grid { grid-template-columns: 1fr; } }
+.perks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 22px; }
+@media (max-width: 480px) { .perks { grid-template-columns: 1fr; } }
+.perk { background: var(--ground); border-radius: 12px; padding: 14px 16px; display: grid; gap: 2px; }
+.perk b { font-family: var(--f-display); font-size: 1.05rem; }
+.perk span { color: var(--muted); font-size: .9rem; }
+.tasks { columns: 2; column-gap: 28px; padding: 0; margin: 0; list-style: none; }
+@media (max-width: 480px) { .tasks { columns: 1; } }
+.tasks li { break-inside: avoid; padding: 7px 0 7px 22px; position: relative; border-bottom: 1px solid var(--line); font-size: .96rem; }
+.tasks li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 8px; height: 8px; border-radius: 2px; background: var(--brand-red); }
+.prices { background: var(--ground); border-radius: var(--r); padding: 22px; display: grid; gap: 12px; }
+.prices table { width: 100%; border-collapse: collapse; font-size: .96rem; }
+.prices td { padding: 9px 0; border-bottom: 1px dashed var(--line); vertical-align: top; }
+.prices td:last-child { text-align: right; white-space: nowrap; font-family: var(--f-mono); font-size: .9rem; font-variant-numeric: tabular-nums; padding-left: 12px; }
+.prices .small { font-size: .84rem; color: var(--muted); }
+
+/* направления по проекту */
+.svc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; display: grid; gap: 10px; align-content: start; }
+.svc__icon { width: 46px; height: 46px; border-radius: 12px; background: var(--surface-2); display: grid; place-items: center; color: var(--indigo); }
+.svc__icon svg { width: 26px; height: 26px; }
+.svc .when { color: var(--muted); font-size: .94rem; }
+.svc .when b { color: var(--ink); font-weight: 600; }
+.svc p:last-child { font-size: .97rem; }
+
+/* объекты */
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .cases { grid-template-columns: 1fr; max-width: 520px; } }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+.case img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.case__body { padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; }
+.case__body p { font-size: .94rem; color: var(--ink-soft); }
+.spec { font-family: var(--f-mono); font-size: .76rem; color: var(--muted); line-height: 1.5; border-top: 1px dashed var(--line); padding-top: 10px; }
+
+/* как работаю */
+.steps-wrap { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr); gap: 32px; align-items: start; }
+@media (max-width: 860px) { .steps-wrap { grid-template-columns: 1fr; } }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 16px; counter-increment: s; }
+.steps li::before { content: counter(s); grid-row: span 2; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--steel); display: grid; place-items: center; font-family: var(--f-mono); font-size: .9rem; color: var(--red-ink); background: var(--surface); }
+.steps p { color: var(--ink-soft); font-size: .97rem; }
+.aside { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; display: grid; gap: 12px; box-shadow: var(--shadow); }
+.aside ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.aside .small { font-size: .88rem; color: var(--muted); }
+
+/* о мастере */
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; }
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr; } }
+.facts h3 { margin-bottom: 4px; }
+.facts p { color: var(--ink-soft); }
+
+/* отзывы */
+.scores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 26px; }
+@media (max-width: 700px) { .scores { grid-template-columns: 1fr; } }
+.score { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 14px; align-items: center; text-decoration: none; }
+.score:hover { border-color: var(--steel); }
+.score b { font-family: var(--f-display); font-size: 2rem; grid-row: span 2; line-height: 1; font-variant-numeric: tabular-nums; }
+.score span { font-weight: 600; }
+.score small { color: var(--muted); font-size: .86rem; }
+.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 900px) { .reviews { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .reviews { grid-template-columns: 1fr; } }
+.review { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: grid; gap: 12px; grid-template-rows: auto 1fr auto; }
+.stars { color: #f2b300; letter-spacing: 2px; font-size: .95rem; }
+.review blockquote { margin: 0; font-size: .96rem; white-space: pre-line; }
+.review figcaption { font-size: .85rem; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.review figcaption b { color: var(--ink); font-weight: 600; }
+.review figcaption a { color: var(--muted); }
+
+/* вопросы */
+.faq { display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0 20px; }
+.faq summary { cursor: pointer; padding: 16px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--f-mono); color: var(--red-ink); font-size: 1.2rem; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding-bottom: 18px; color: var(--ink-soft); }
+
+/* контакты */
+.contacts { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 32px; align-items: start; }
+@media (max-width: 820px) { .contacts { grid-template-columns: 1fr; } }
+.contact-card { background: var(--indigo); color: var(--on-dark); border-radius: 20px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 18px; }
+.contact-card h3 { color: var(--on-dark); }
+.contact-card .phone { font-family: var(--f-display); font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem); font-weight: 700; user-select: all; font-variant-numeric: tabular-nums; }
+.contact-card .muted { color: rgba(255,255,255,.78); font-size: .93rem; }
+.contact-card .btn--line { border-color: rgba(255,255,255,.7); color: #fff; }
+.contact-card .btn--line:hover { background: rgba(255,255,255,.1); }
+.contact-card .btn--white { background: #fff; color: #251961; }
+.copy-note { font-size: .82rem; color: rgba(255,255,255,.78); min-height: 1.2em; }
+.links { display: grid; gap: 10px; }
+.links a { display: flex; justify-content: space-between; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; text-decoration: none; font-weight: 500; }
+.links a:hover { border-color: var(--steel); }
+.links a span:last-child { color: var(--muted); font-weight: 400; font-size: .9rem; }
+.addr { display: grid; gap: 4px; padding: 4px 4px 12px; }
+.addr small { color: var(--muted); }
+
+.footer { border-top: 1px solid var(--line); padding-block: 28px 36px; font-size: .86rem; color: var(--muted); }
+.footer__row { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: center; }
+.footer__brand { display: flex; gap: 12px; align-items: center; }
+.footer__brand img { width: 56px; }
+
+/* нижняя панель на телефоне */
+.mobile-bar { display: none; }
+@media (max-width: 640px) {
+  .mobile-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 9;
+    padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+    background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
+  .mobile-bar .btn { justify-content: center; padding: 12px 10px; }
+  .footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* страница работ */
+.page-head { padding-block: 36px 8px; }
+.page-head h1 { font-size: clamp(1.9rem, 1.3rem + 2vw, 2.7rem); font-weight: 700; margin-top: 6px; }
+.back { font-weight: 600; color: var(--red-ink); text-decoration: none; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding: 0; list-style: none; }
+.toc a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-size: .9rem; font-weight: 500; text-decoration: none; }
+.toc a:hover { border-color: var(--steel); }
+.work { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; display: grid; gap: 14px; }
+.work + .work { margin-top: 18px; }
+.work__text { display: grid; gap: 8px; max-width: 72ch; }
+.work__text p { color: var(--ink-soft); }
+.work__tags { font-family: var(--f-mono); font-size: .76rem; color: var(--muted); }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 10px; }
+.gallery a { display: block; border-radius: 10px; overflow: hidden; background: var(--surface-2); }
+.gallery img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .2s; }
+.gallery a:hover img { transform: scale(1.03); }
+.gallery--wide img { aspect-ratio: 4 / 3; }
+.group-title { margin: 44px 0 16px; font-size: 1.5rem; }
+.gallery a:only-child { grid-column: 1 / -1; max-width: 560px; }
+@media (max-width: 640px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gallery a:only-child { grid-column: 1 / -1; } }
+.group-title:first-child { margin-top: 8px; }
+.note-everyday { background: var(--surface-2); border-radius: var(--r); padding: 18px 22px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between; }
+.note-everyday p { color: var(--ink-soft); }
+.note-everyday a { font-weight: 600; color: var(--red-ink); white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<div class="topline gutter">Заявки ежедневно с 9:00 до 21:00 · выезд по Миассу в день обращения</div>
+
+<header class="header gutter">
+  <div class="wrap header__bar">
+    <a class="brand" href="index.html" aria-label="Техник Миасс – в начало">
+      <img src="img/logo-sm.png" alt="" width="44" height="55">
+      <span><b>Техник Миасс</b><small>сантехника · отопление · сварка</small></span>
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="index.html#dom">Квартира и дом</a>
+      <a href="index.html#proekty">Объекты по проекту</a>
+      <a href="raboty.html">Работы</a>
+      <a href="index.html#rabota">Как работаю</a>
+      <a href="index.html#master">О мастере</a>
+      <a href="index.html#otzyvy">Отзывы</a>
+      <a href="index.html#voprosy">Вопросы</a>
+      <a href="index.html#kontakty">Контакты</a>
+    </nav>
+    <a class="phone-btn" href="tel:+79085704767">+7 908 570-47-67</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="page-head gutter">
+    <div class="wrap">
+      <a class="back" href="index.html">← На главную</a>
+      <h1>Выполненные работы</h1>
+      <p class="lead" style="margin-top:10px">Фото с объектов, где работал Данис. Нажмите на фото, чтобы открыть его крупно.</p>
+      <ul class="toc">
+        <li><a href="#otoplenie">Отопление</a></li>
+        <li><a href="#voda">Водоснабжение и сантехника</a></li>
+        <li><a href="#svarka">Сварка и металлоконструкции</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="gutter" style="padding-bottom:64px">
+    <div class="wrap">
+      <h2 class="group-title" id="otoplenie">Отопление</h2>
+      <article class="work" id="teplovoy-uzel">
+        <div class="work__text">
+          <h3>Монтаж теплового узла здания</h3>
+          <p>Пластинчатые теплообменники, циркуляционные насосы, фланцевая запорная арматура и фильтры. Стальные трубопроводы на сварке.</p>
+          <p class="work__tags">Тепловой узел · стальные трубопроводы · сварка</p>
+        </div>
+        <div class="gallery gallery--wide">
+          <a href="img/uzel-2.jpg" target="_blank" rel="noopener"><img src="img/uzel-2.jpg" alt="Смонтированный тепловой узел: стальные трубопроводы, насосы, пластинчатый теплообменник" loading="lazy"></a>
+        </div>
+      </article>
+      <article class="work" id="ceh">
+        <div class="work__text">
+          <h3>Водяное отопление производственного цеха</h3>
+          <p>Проложил и сварил магистрали отопления, сделал подводки к тепловентиляторам и смонтировал регистры.</p>
+          <p class="work__tags">Цех ≈ 12 × 50 м · магистраль Ø110 мм · подводки Ø40 мм</p>
+        </div>
+        <div class="gallery">
+          <a href="img/ceh.jpg" target="_blank" rel="noopener"><img src="img/ceh.jpg" alt="Монтаж отопления в цехе: тепловентиляторы и стальные магистрали" loading="lazy"></a>
+        </div>
+      </article>
+      <article class="work" id="ik-otoplenie">
+        <div class="work__text">
+          <h3>Инфракрасное отопление цеха: кронштейны и трубопроводы</h3>
+          <p>Работал на субподряде у организации, которая делала отопление цеха. Изготовил кронштейны для инфракрасных излучателей, собрал подводящие трубопроводы. Сварку стыков выполнял аттестованный сварщик подрядчика.</p>
+          <p class="work__tags">Субподряд · металлоконструкции · монтаж трубопроводов</p>
+        </div>
+        <div class="gallery">
+          <a href="img/raboty/ceh-ik-1.jpg" target="_blank" rel="noopener"><img src="img/raboty/ceh-ik-1.jpg" alt="Пролёт цеха с подведёнными трубопроводами под потолком" loading="lazy"></a>
+          <a href="img/raboty/ceh-ik-3.jpg" target="_blank" rel="noopener"><img src="img/raboty/ceh-ik-3.jpg" alt="Трубопроводы под кровлей цеха" loading="lazy"></a>
+          <a href="img/raboty/ceh-ik-2.jpg" target="_blank" rel="noopener"><img src="img/raboty/ceh-ik-2.jpg" alt="Сваренные кронштейны для инфракрасных излучателей" loading="lazy"></a>
+        </div>
+      </article>
+
+      <article class="work" id="radiatory">
+        <div class="work__text">
+          <h3>Замена стояка и установка радиаторов в квартире</h3>
+          <p>Новый стояк отопления в штробе стены, стальные панельные радиаторы под окнами, подводки из полипропиленовых труб.</p>
+          <p class="work__tags">Квартира · стояк · панельные радиаторы</p>
+        </div>
+        <div class="gallery">
+          <a href="img/raboty/radiatory-1.jpg" target="_blank" rel="noopener"><img src="img/raboty/radiatory-1.jpg" alt="Новый стояк отопления в штробе стены" loading="lazy"></a>
+          <a href="img/raboty/radiatory-2.jpg" target="_blank" rel="noopener"><img src="img/raboty/radiatory-2.jpg" alt="Панельный радиатор под окном с подводкой" loading="lazy"></a>
+          <a href="img/raboty/radiatory-3.jpg" target="_blank" rel="noopener"><img src="img/raboty/radiatory-3.jpg" alt="Установленный радиатор во время ремонта" loading="lazy"></a>
+        </div>
+      </article>
+
+      <article class="work" id="teploobmennik">
+        <div class="work__text">
+          <h3>Пайка медных трубок теплообменника</h3>
+          <p>Восстановление медных отводов на алюминиевом теплообменнике: пайка трубок без замены всего узла.</p>
+          <p class="work__tags">Медь · пайка · ремонт</p>
+        </div>
+        <div class="gallery">
+          <a href="img/raboty/teploobmennik.jpg" target="_blank" rel="noopener"><img src="img/raboty/teploobmennik.jpg" alt="Медные отводы теплообменника после пайки" loading="lazy"></a>
+        </div>
+      </article>
+
+
+      <h2 class="group-title" id="voda">Водоснабжение и сантехника</h2>
+      <article class="work" id="skrytaya-razvodka">
+        <div class="work__text">
+          <h3>Скрытая разводка водопровода в санузле</h3>
+          <p>Штробление стен и укладка труб холодной и горячей воды под плитку, вывод под смеситель душа. После отделки трубы не видны.</p>
+          <p class="work__tags">Санузел · штробление · разводка под плитку</p>
+        </div>
+        <div class="gallery">
+          <a href="img/raboty/skrytaya-razvodka-1.jpg" target="_blank" rel="noopener"><img src="img/raboty/skrytaya-razvodka-1.jpg" alt="Трубы холодной и горячей воды в штробе на черновой стене" loading="lazy"></a>
+          <a href="img/raboty/skrytaya-razvodka-2.jpg" target="_blank" rel="noopener"><img src="img/raboty/skrytaya-razvodka-2.jpg" alt="Разводка в штробах с выводом под смеситель" loading="lazy"></a>
+        </div>
+      </article>
+
+      <article class="work" id="vodonagrevatel">
+        <div class="work__text">
+          <h3>Установка накопительных водонагревателей</h3>
+          <p>Монтаж бойлера на стену, подключение к водопроводу через запорную арматуру.</p>
+          <p class="work__tags">Бойлер · подключение к водопроводу</p>
+        </div>
+        <div class="gallery">
+          <a href="img/raboty/vodonagrevatel-1.jpg" target="_blank" rel="noopener"><img src="img/raboty/vodonagrevatel-1.jpg" alt="Установленный накопительный водонагреватель в санузле" loading="lazy"></a>
+          <a href="img/raboty/vodonagrevatel-2.jpg" target="_blank" rel="noopener"><img src="img/raboty/vodonagrevatel-2.jpg" alt="Водонагреватель с подключением к водопроводу" loading="lazy"></a>
+        </div>
+      </article>
+
+
+      <h2 class="group-title" id="svarka">Сварка и металлоконструкции</h2>
+      <article class="work" id="lestnica">
+        <div class="work__text">
+          <h3>Сварной металлический каркас лестницы</h3>
+          <p>Изготовил полностью самостоятельно: раскроил металл и вручную сварил каркас со ступенями. Деревянные ступени и перила монтирует другой мастер.</p>
+          <p class="work__tags">Металлоконструкции · ручная дуговая сварка</p>
+        </div>
+        <div class="gallery gallery--wide">
+          <a href="img/raboty/lestnica.jpg" target="_blank" rel="noopener"><img src="img/raboty/lestnica.jpg" alt="Сварной каркас лестницы с консольными ступенями" loading="lazy"></a>
+        </div>
+      </article>
+
+      <article class="work" id="stellazhi">
+        <div class="work__text">
+          <h3>Сварные стеллажи по размерам помещения</h3>
+          <p>Стеллажи из профильной трубы под размер комнаты и балкона, полки из фанеры.</p>
+          <p class="work__tags">Профильная труба · сварка</p>
+        </div>
+        <div class="gallery">
+          <a href="img/raboty/stellazhi-1.jpg" target="_blank" rel="noopener"><img src="img/raboty/stellazhi-1.jpg" alt="Сварной стеллаж с фанерными полками на балконе" loading="lazy"></a>
+          <a href="img/raboty/stellazhi-2.jpg" target="_blank" rel="noopener"><img src="img/raboty/stellazhi-2.jpg" alt="Сварные стеллажи вдоль стены комнаты" loading="lazy"></a>
+        </div>
+      </article>
+
+
+      <div class="note-everyday" style="margin-top:36px">
+        <p>Нужна похожая работа? Позвоните или пришлите фото в MAX – подскажу, сколько будет стоить.</p>
+        <a class="js-max" href="https://max.ru/" target="_blank" rel="noopener">Написать в MAX →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer gutter">
+  <div class="wrap footer__row">
+    <div class="footer__brand">
+      <img src="img/logo-sm.png" alt="Логотип «Техник Миасс»" width="56" height="70">
+      <div>Исполнитель: Жамилов Данис Вагизович, плательщик налога на профессиональный доход, ИНН 743806259859</div>
+    </div>
+    <div>© 2026 Техник Миасс · Информация на сайте не является публичной офертой</div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn--red" href="tel:+79085704767">Позвонить</a>
+  <a class="btn btn--indigo js-max" href="https://max.ru/" target="_blank" rel="noopener">Написать в MAX</a>
+</div>
+
+<div class="mobile-bar">
+  <a class="btn btn--red" href="tel:+79085704767">Позвонить</a>
+  <a class="btn btn--indigo js-max" href="https://max.ru/" target="_blank" rel="noopener">Написать в MAX</a>
+</div>
+
+<script>
+var LINKS = {
+  max: "https://max.ru/u/f9LHodD0cOJzlQwxexQjAu40f3YeFBe5lycmQ14bem66pRA56JiCwseXWVM",
+  avito: "https://www.avito.ru/user/0c97965979351af2c8b39ec9e98025fe/profile"
+};
+document.querySelectorAll('.js-max').forEach(function (a) { a.href = LINKS.max; });
+document.querySelectorAll('.js-avito').forEach(function (a) { a.href = LINKS.avito; });
+</script>
+
+</body>
+</html>
