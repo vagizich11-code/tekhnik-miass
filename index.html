@@ -168,8 +168,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* направления по проекту */
 .svc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; display: grid; gap: 10px; align-content: start; }
-.svc__icon { width: 46px; height: 46px; border-radius: 12px; background: var(--surface-2); display: grid; place-items: center; color: var(--indigo); }
-.svc__icon svg { width: 26px; height: 26px; }
+/* Fixed logo palette on a light plate keeps the drawings legible in both themes. */
+.svc__icon { width: 84px; height: 84px; border-radius: 18px; background: #f7f8fc; border: 1px solid #dce2ed; display: grid; place-items: center; margin-bottom: 4px; }
+.svc__icon img { width: 64px; height: 64px; display: block; }
 .svc .when { color: var(--muted); font-size: .94rem; }
 .svc .when b { color: var(--ink); font-weight: 600; }
 .svc p:last-child { font-size: .97rem; }
@@ -398,37 +399,37 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       </div>
       <div class="grid-3">
         <article class="svc">
-          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 8h18M3 16h18"/><circle cx="8" cy="8" r="2.2" fill="currentColor"/><circle cx="16" cy="16" r="2.2" fill="currentColor"/><path d="M12 4v16"/></svg></div>
+          <div class="svc__icon" aria-hidden="true"><img src="img/services/heat-unit.svg" alt="" width="64" height="64"></div>
           <h3>Тепловые узлы</h3>
           <p class="when"><b>Когда зовут:</b> есть проект теплового узла здания, а смонтировать его некому.</p>
           <p>Теплообменники, циркуляционные насосы, запорная и автоматическая арматура, приборы учёта тепла, датчики КИП. Стальные трубопроводы на сварке и фланцах.</p>
         </article>
         <article class="svc">
-          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="10" height="16" rx="1.5"/><path d="M15 7h3a1 1 0 0 1 1 1v8M19 16v4M8 15c0-2 2-2.5 2-4.5 1.2 1 2 2.2 2 3.5a2 2 0 0 1-4 1z"/></svg></div>
+          <div class="svc__icon" aria-hidden="true"><img src="img/services/boiler.svg" alt="" width="64" height="64"></div>
           <h3>Котельные и обвязка котлов</h3>
           <p class="when"><b>Когда зовут:</b> ставите газовый или электрический котёл, собираете котельную.</p>
           <p>Обвязка котла, насосы, гребёнки, водоподготовка. Подключение к газовой сети и пуск выполняет газоснабжающая организация.</p>
         </article>
         <article class="svc">
-          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l5-4 5 4v12M4 21h16M14 13h6v8"/><path d="M17 13V6"/><path d="M17 6c1.2-.8 1.2-2.2 0-3"/></svg></div>
+          <div class="svc__icon" aria-hidden="true"><img src="img/services/gravity-heating.svg" alt="" width="64" height="64"></div>
           <h3>Отопление без электричества</h3>
           <p class="when"><b>Когда зовут:</b> дом с печью, где отключают свет.</p>
           <p>Гравитационная система с естественной циркуляцией: работает без насоса. Рассчитываю уклоны и диаметры, варю контур и регистры.</p>
         </article>
         <article class="svc">
-          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V10l7-5 7 5v10"/><rect x="8.5" y="12" width="7" height="5" rx="1"/><path d="M10 14.5h4"/></svg></div>
+          <div class="svc__icon" aria-hidden="true"><img src="img/services/warehouse.svg" alt="" width="64" height="64"></div>
           <h3>Отопление цехов и складов</h3>
           <p class="when"><b>Когда зовут:</b> нужно обогреть производственное помещение или ангар.</p>
           <p>Тепловентиляторы, регистры, стальные и полипропиленовые магистрали, замена теплоносителя.</p>
         </article>
         <article class="svc">
-          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l7-7M11 13l2-2 3 3-2 2zM15 9l2-2M18 4l2 2-3 3-2-2z"/><path d="M6 13l-1-2M8 11l-2-.5M9 15l-2 .5"/></svg></div>
+          <div class="svc__icon" aria-hidden="true"><img src="img/services/welding.svg" alt="" width="64" height="64"></div>
           <h3>Сварочные работы</h3>
           <p class="when"><b>Когда зовут:</b> нужно врезаться в магистраль или сварить конструкцию.</p>
           <p>Электрогазосварка трубопроводов отопления и водоснабжения. Опоры, кронштейны, регистры, каркасы.</p>
         </article>
         <article class="svc">
-          <div class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z"/><path d="M10 13a2 2 0 0 0 2 2"/></svg></div>
+          <div class="svc__icon" aria-hidden="true"><img src="img/services/utilities.svg" alt="" width="64" height="64"></div>
           <h3>Наружные сети</h3>
           <p class="when"><b>Когда зовут:</b> строите дом или подводите воду и канализацию к зданию.</p>
           <p>Водоснабжение и канализация, септики из полипропилена, ПНД и бетона, промывка канализации.</p>
